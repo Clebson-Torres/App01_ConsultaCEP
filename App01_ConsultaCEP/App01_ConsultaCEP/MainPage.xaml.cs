@@ -22,12 +22,37 @@ namespace App01_ConsultaCEP
         private void BuscarCEP(object sender, EventArgs args)
         {
             string cep = CEP.Text.Trim();
-            Endereco end = ViaCEPservico.BuscarEnderecoViaCEP(cep);
 
-            RESULTADO.Text = string.Format("Endereço: {0},{1} {2}",  end.logradouro, end.bairro, end.uf, end.localidade  );
-            //todo - logica do programa
-            // todo - validações
+            if (isVALIDCEP(cep))
+            {
+                Endereco end = ViaCEPservico.BuscarEnderecoViaCEP(cep);
+
+                RESULTADO.Text = string.Format("Endereço: {0},{1} {2}", end.logradouro, end.bairro, end.uf, end.localidade);
+                        
+             }
+
 
         }
+        private bool isVALIDCEP(string cep)
+        {
+            bool valido = true;
+
+            if(cep.Length !=8)
+            {
+                DisplayAlert("ERRO", "CEP inválido! O CEP deve conter 8 caracteres.", "OK");
+                
+                valido = false;
+            }
+            int NovoCEP = 0;
+
+                if(!int.TryParse(cep, out NovoCEP))
+            {
+                DisplayAlert("ERRO", "CEP inválido! O CEP deve ser composto apenas por números.", "OK");
+                
+                valido = false;
+            }
+            return valido;
+        }
+
     }
 }
