@@ -6,9 +6,9 @@
     <StackLayout BackgroundColor="Yellow" Padding="30" Spacing="30">
         
         <Image Source="LogoCorreios.png" x:Name="LOGO" />
-        <Entry Placeholder="Digite o CEP" PlaceholderColor="Black" BackgroundColor="White" TextColor="Black" x:Name="CEP" />
+        <Entry Placeholder="Digite o CEP" PlaceholderColor="Black" BackgroundColor="White" TextColor="Black"  x:Name="CEP" />
         <Button Text="Buscar CEP" TextColor="White" BackgroundColor="Blue" x:Name="BOTAO" />
-        <Label Text="" x:Name="RESULTADO"
+        <Label Text="" TextColor="Black" FontSize="Small" x:Name="RESULTADO"
                VerticalOptions="Center"
                HorizontalOptions="Center" 
 

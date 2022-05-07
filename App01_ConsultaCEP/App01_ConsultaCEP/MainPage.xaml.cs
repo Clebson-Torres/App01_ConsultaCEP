@@ -25,9 +25,25 @@ namespace App01_ConsultaCEP
 
             if (isVALIDCEP(cep))
             {
-                Endereco end = ViaCEPservico.BuscarEnderecoViaCEP(cep);
+                try
+                {
+                    Endereco end = ViaCEPservico.BuscarEnderecoViaCEP(cep);
 
-                RESULTADO.Text = string.Format("Endereço: {0},{1} {2}", end.logradouro, end.bairro, end.uf, end.localidade);
+                    if(end != null)
+                    {
+                        RESULTADO.Text = string.Format("Endereço: {2} de {3} {0},{1}", end.localidade, end.uf, end.logradouro, end.bairro );
+                    }
+                    else
+                    {
+                        DisplayAlert("ERRO", "O endereço não foi encontrado para o CEP informado: " + cep,"OK");
+                    }
+                    
+
+                }catch(Exception e)
+                {
+                    DisplayAlert("ERRO CRÍTICO", e.Message, "OK");
+                }
+                
                         
              }
 
