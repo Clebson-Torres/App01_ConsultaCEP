@@ -11,16 +11,16 @@ namespace App01_ConsultaCEP.servicos
 {
     public class ViaCEPservico
     {
-        private static string EnderecoUrl = "https://viacep.com.br/ws/{}/json/";
+        private static string EnderecoUrl = "https://viacep.com.br/ws/{0}/json/";
 
-        public static endereco BuscarENderecoViaCEP(string cep)
+        public static Endereco BuscarEnderecoViaCEP(string cep)
         {
             string NovoEnderecoURL = string.Format(EnderecoUrl, cep);
 
             WebClient wc = new WebClient();
-            string Conteudo = wc.DownloadString(NovoEnderecoURL);
+            string Conteudo = wc.DownloadString (NovoEnderecoURL);
 
-            endereco end = JsonConvert.DeserializeObject<endereco>(Conteudo);
+            Endereco end = JsonConvert.DeserializeObject<Endereco>(Conteudo);
 
             return end;
 
